@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHIIKAWA</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/photo.css">
+    <script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="top">
+            <img src="./img/logo.png" alt="" style="position: absolute;left: 10px;top:3px;">
+            <ul class="nav">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="rbcx.html">热榜呈现</a></li>
+                <li><a href="qgfx.html">情感分析</a></li>
+                <li><a href="ztjl.html">主题聚类</a></li>
+                <li><a href="sjwl.html">社交网络分析</a></li>
+                <li><a href="https://x.com/search?q=Spring%20Festival%20Gala%20min_replies%3A-1%20until%3A2025-01-29%20since%3A2025-01-28&src=typed_query" target="_blank">外网关注</a></li>
+            </ul>
+        </div>
+        <div id="main" style="width: 1200px;height:800px;margin: 50px auto;"></div>
+    </main>
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: 'LDA主题聚类',
+                left: 'center',
+                top: '20px',
+                textStyle: {
+                    color: '#D32F2F',    // 改为深红色
+                    fontSize: 24,
+                    fontWeight: 'bold'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                formatter: function(params) {
+                    var data = params[0];
+                    return data.name + ': ' + (data.value[1] * 100).toFixed(2) + '%';
+                }
+            },
+            dataset: {
+                source: [
+                    ['name', 'value'],
+                    ['黄子弘', 0.030],
+                    ['张泽昊', 0.048],
+                    ['王一博', 0.094],
+                    ['机器人', 0.018],
+                    ['白鹿', 0.019],
+                    ['祝', 0.034],
+                    ['刘宇', 0.044],
+                    ['罗云熙', 0.011],
+                    ['白鹿超', 0.019],
+                    ['话', 0.026],
+                    ['星舞', 0.028],
+                    ['易烊千玺', 0.011],
+                    ['拜年', 0.018],
+                    ['射雕', 0.025],
+                    ['陪伴', 0.026],
+                    ['相声', 0.010],
+                    ['团圆', 0.018],
+                    ['英雄传', 0.018],
+                    ['央视春晚', 0.025],
+                    ['天津', 0.008],
+                    ['源', 0.018],
+                    ['中国', 0.018],
+                    ['蛇', 0.021],
+                    ['深', 0.008],
+                    ['小时候', 0.015],
+                    ['日月', 0.017],
+                    ['开', 0.019],
+                    ['言', 0.008],
+                    ['好好笑', 0.015],
+                    ['心海', 0.017],
+                    ['开', 0.016],
+                    ['合作', 0.007],
+                    ['东母丹', 0.015],
+                    ['强健', 0.017],
+                    ['拉萨', 0.016],
+                    ['年', 0.007],
+                    ['超越山', 0.015],
+                    ['宇护', 0.017],
+                    ['熊敬腾', 0.016],
+                    ['真', 0.007],
+                    ['爱看', 0.015],
+                    ['坚毅', 0.017],
+                    ['猫头', 0.015],
+                    ['期待', 0.007],
+                    ['好安', 0.015],
+                    ['一瞬间', 0.017],
+                    ['小区', 0.015],
+                    ['中西', 0.007],
+                    ['小品', 0.015],
+                    ['体随', 0.017],
+                    ['太棒了', 0.015],
+                    ['正菲', 0.006],
+                    ['新年快乐', 0.012],
+                    ['幸运', 0.017],
+                    ['新年快乐', 0.015],
+                    ['现场', 0.006],
+                    ['小猫', 0.012],
+                    ['日光', 0.017],
+                    ['舞台', 0.014],
+                    ['备播', 0.006],
+                    ['新年', 0.009],
+                    ['肖战', 0.016],
+                    ['梦想', 0.013],
+                    ['保真', 0.006],
+                    ['点亮', 0.009],
+                    ['儿女', 0.016],
+                    ['浪漫', 0.013],
+                    ['现身', 0.006],
+                    ['乐', 0.009],
+                    ['感谢', 0.015],
+                    ['养乐多', 0.013],
+                    ['蛇', 0.006],
+                    ['合伙人', 0.009],
+                    ['代言人', 0.013],
+                    ['待签', 0.013],
+                    ['新闻网', 0.006],
+                    ['蜗家', 0.009],
+                    ['东方', 0.013],
+                    ['期待', 0.013],
+                    ['去年', 0.006],
+                    ['约', 0.009],
+                    ['苏新皓', 0.013],
+                    ['走上', 0.013],
+                    ['扭', 0.006],
+                    ['睡眠', 0.009],
+                    ['白事可乐', 0.013],
+                    ['每一秒', 0.013],
+                    ['春节', 0.006],
+                    ['此时此刻', 0.009],
+                    ['登陆', 0.011],
+                    ['雪山', 0.013],
+                    ['街边', 0.006],
+                    ['万家灯火', 0.009],
+                    ['卫视', 0.010],
+                    ['形状', 0.013],
+                    ['舞狮', 0.006],
+                    ['亲友', 0.009],
+                    ['一年', 0.010],
+                    ['桑花', 0.013],
+                    ['去年', 0.006],
+                    ['相聚', 0.009],
+                    ['后台', 0.010],
+                    ['远', 0.013],
+                    ['扭秧歌', 0.006],
+                    ['高声', 0.009],
+                    ['舞台', 0.009],
+                    ['曲方', 0.013],
+                    ['月', 0.006],
+                    ['钟声', 0.009],
+                    ['视频', 0.009],
+                    ['鱼丸', 0.013],
+                    ['期间', 0.005],
+                    ['欢乐', 0.009],
+                    ['破', 0.009],
+                    ['虎', 0.013],
+                    ['月', 0.005]
+                ]
+            },
+            grid: { 
+                containLabel: true,
+                left: '3%',
+                right: '4%'
+            },
+            xAxis: { 
+                name: 'value',
+                nameLocation: 'middle'
+            },
+            yAxis: { 
+                type: 'category'
+            },
+            dataZoom: [
+                {
+                    type: 'slider',
+                    yAxisIndex: 0,
+                    right: '1%',
+                    show: true,
+                    start: 0,
+                    end: 30  // 默认显示前30%的数据
+                },
+                {
+                    type: 'inside',
+                    yAxisIndex: 0,
+                    start: 0,
+                    end: 30
+                }
+            ],
+            visualMap: {
+                orient: 'horizontal',
+                left: 'center',
+                min: 0,
+                max: 0.1,
+                text: ['High Value', 'Low Value'],
+                dimension: 1,
+                inRange: {
+                    color: [
+                        '#FFFF00',  // 明黄色
+                        '#FFA500',  // 橙色
+                        '#FF4500',  // 橙红色
+                        '#FF0000',  // 大红
+                        '#FF1493',  // 深粉红
+                        '#DC143C'   // 猩红色
+                    ]
+                }
+            },
+            series: [
+                {
+                    type: 'bar',
+                    encode: {
+                        x: 'value',
+                        y: 'name'
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+</body>
+</html>
